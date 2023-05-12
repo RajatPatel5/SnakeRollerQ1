@@ -5,8 +5,14 @@ using UnityEngine.UI;
 
 public class BallScore : MonoBehaviour
 {
+    public static BallScore inst;
     public int ballscore = 30;
     public Text ballscoretxt;
+
+    private void Awake()
+    {
+        inst = this;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

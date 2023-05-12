@@ -18,13 +18,13 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("obs"))
         {
-            Destroy(gameObject);
+            UIManager.inst.ShowNextScreen(ScreenEnum.GameOver);
+            Spawner.inst.OnDisablePlay();
 
         }
 
+
     }
-
-
 
 
 }
