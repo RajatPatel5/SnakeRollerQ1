@@ -5,13 +5,38 @@ using UnityEngine.UI;
 
 public class MainMenu : screen
 {
-
+    public GameObject SettingPanel;
+    public void Start()
+    {
+        SettingPanel.SetActive(false);
+    }
     public void OnPlayButton()
     {
         UIManager.inst.ShowNextScreen(ScreenEnum.GamePlay);
+        Audio.inst.SoundPlay(Audio.SoundName.Buttons);
         Spawner.inst.OnEnablePlay();
-        Spawner.inst.OnStartBallPlay();
+    }
 
+    public void OnSettingButton()
+    {
+        Audio.inst.SoundPlay(Audio.SoundName.Buttons);
+        SettingPanel.SetActive(true);
+    }
+
+    public void OnBackButton()
+    {
+        Audio.inst.SoundPlay(Audio.SoundName.Buttons);
+        SettingPanel.SetActive(false);
+        UIManager.inst.ShowNextScreen(ScreenEnum.MainMenu);
+
+    }
+    public void OnSaveButton()
+    {
+        Audio.inst.SoundPlay(Audio.SoundName.Buttons);
+    }
+    public void OnDefaultButtton()
+    {
+        Audio.inst.SoundPlay(Audio.SoundName.Buttons);
     }
 
 }

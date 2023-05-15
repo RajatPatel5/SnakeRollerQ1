@@ -9,7 +9,6 @@ public class Score : MonoBehaviour
     public int score = 0;
     public Text scoretxt;
 
-
     private void Awake()
     {
         inst = this;
@@ -20,6 +19,7 @@ public class Score : MonoBehaviour
         score = score + 10;
         scoretxt.text = score.ToString();
     }
+
 
 
 }

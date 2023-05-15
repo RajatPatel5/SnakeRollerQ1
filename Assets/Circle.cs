@@ -7,9 +7,11 @@ public class Circle : MonoBehaviour
     public float speed;
     public GameObject innercircle;
     public GameObject outercircle;
+    public static Circle inst;
     private void Start()
     {
         Timer();
+        inst = this;
     }
 
     void Update()

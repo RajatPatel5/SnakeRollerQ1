@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GamePlay : screen
 {
-    private void Changed()
+    private void Start()
     {
-        UIManager.inst.ShowNextScreen(ScreenEnum.GameOver);
+        ShowScreen();
     }
 }

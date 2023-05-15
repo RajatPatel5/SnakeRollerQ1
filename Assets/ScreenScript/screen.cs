@@ -8,7 +8,8 @@ public enum ScreenEnum
     Splash,
     MainMenu,
     GamePlay,
-    GameOver
+    GameOver,
+    LevelComplete
 
 }
 

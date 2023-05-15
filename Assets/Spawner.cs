@@ -7,16 +7,11 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] GameObject ball;
     public Action OnAction;
-    public Action OnStartAction;
     public static Spawner inst;
 
     private void Awake()
     {
         inst = this;
-    }
-    private void Start()
-    {
-        OnStartBallPlay();
     }
 
     private void Update()
@@ -34,9 +29,11 @@ public class Spawner : MonoBehaviour
         {
             if (BallScore.inst.ballscore == 0)
             {
+                UIManager.inst.ShowNextScreen(ScreenEnum.LevelComplete);
                 return;
             }
             Instantiate(ball, transform.position, transform.rotation);
+            Audio.inst.SoundPlay(Audio.SoundName.Shoot);
 
         }
 
@@ -45,16 +42,15 @@ public class Spawner : MonoBehaviour
     public void OnEnablePlay()
     {
         OnAction += BallSpawn;
+
+        // OnAction += Circle.inst.Timer;
     }
     public void OnDisablePlay()
     {
         OnAction -= BallSpawn;
-        OnAction -= StartBallSpawn;
+        // OnAction -= Circle.inst.Timer;
     }
-    public void OnStartBallPlay()
-    {
-        OnStartAction += StartBallSpawn;
-    }
+
 
 }
 
