@@ -10,6 +10,8 @@ public class GameOver : screen
     private void Start()
     {
         Spawner.inst.OnDisablePlay();
+        //Audio.inst.SoundStop();
+
     }
     private void Update()
     {

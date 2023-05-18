@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class GamePlay : screen
 {
+
     private void Start()
     {
         ShowScreen();
+
     }
+
+
 }
