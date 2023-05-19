@@ -17,7 +17,6 @@ public class Splash : screen
         image = GetComponent<Image>();
 
         UIManager.inst.ShowNextScreen(ScreenEnum.Splash);
-        Spawner.inst.OnDisablePlay();
         StartCoroutine(EnableMainMenu());
 
     }

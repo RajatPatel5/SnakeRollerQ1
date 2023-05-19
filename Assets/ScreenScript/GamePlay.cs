@@ -8,7 +8,7 @@ public class GamePlay : screen
     private void Start()
     {
         ShowScreen();
-
+        // UIManager.inst.ShowNextScreen(ScreenEnum.GamePlay);
     }
 
 

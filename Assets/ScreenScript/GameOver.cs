@@ -9,20 +9,21 @@ public class GameOver : screen
 
     private void Start()
     {
-        Spawner.inst.OnDisablePlay();
+
         //Audio.inst.SoundStop();
+        // displayscoretxt.text = Score.inst.scoretxt.text;
 
     }
     private void Update()
     {
-        displayscoretxt.text = Score.inst.scoretxt.text;
+
 
     }
     public void Try()
     {
         UIManager.inst.ShowNextScreen(ScreenEnum.GamePlay);
         Audio.inst.SoundPlay(Audio.SoundName.Try);
-        Spawner.inst.OnEnablePlay();
+        //Spawner.inst.OnEnablePlay();
     }
     public void OnHomeButton()
     {

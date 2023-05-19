@@ -27,13 +27,13 @@ public class Circle1 : MonoBehaviour
             if (i % 2 == 0)
             {
                 rings[i].transform.Rotate(0f, 0f, speed * Time.deltaTime);
-                Debug.Log("even rotate");
+                //Debug.Log("even rotate");
 
             }
             else
             {
                 rings[i].transform.Rotate(0f, 0f, -speed * Time.deltaTime);
-                Debug.Log("odd rotate");
+                // Debug.Log("odd rotate");
 
             }
         }
@@ -45,7 +45,7 @@ public class Circle1 : MonoBehaviour
     {
         Invoke("Timer", 5);
         speed = Random.Range(-50, 100);
-        Debug.Log(speed);
+        //Debug.Log(speed);
 
     }
 

@@ -8,13 +8,14 @@ public class LevelComplete : screen
     public Text displayscoretxt;
     void Start()
     {
-        Spawner.inst.OnDisablePlay();
-        //Audio.inst.SoundPlay(Audio.SoundName.GameComplete);
+        //Spawner.inst.OnDisablePlay();
+        Audio.inst.SoundPlay(Audio.SoundName.GameComplete);
+        //displayscoretxt.text = Score.inst.scoretxt.text;
 
     }
-    private void Update()
+    public void Update()
     {
-        displayscoretxt.text = Score.inst.scoretxt.text;
+
 
     }
 
@@ -22,4 +23,14 @@ public class LevelComplete : screen
     {
         UIManager.inst.ShowNextScreen(ScreenEnum.MainMenu);
     }
+    public void NextBtn()
+    {
+        Spawner.inst.Onreset();
+        UIManager.inst.ShowNextScreen(ScreenEnum.GamePlay);
+        Debug.Log("changeui");
+        LevelManager.inst.NextButton();
+
+    }
+
+
 }

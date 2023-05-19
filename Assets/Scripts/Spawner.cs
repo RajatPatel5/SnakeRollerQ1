@@ -9,7 +9,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] GameObject ball;
     public Action OnAction;
     public static Spawner inst;
-
+    public List<Ball> balls = new List<Ball>();
 
     private void Awake()
     {
@@ -24,17 +24,14 @@ public class Spawner : MonoBehaviour
 
     public void BallSpawn()
     {
+        Debug.LogWarning("BALL SPAWBIBG");
+
         if (Input.GetMouseButtonDown(0))
         {
-            Instantiate(ball, transform.position, transform.rotation);
+            Ball ballobj = Instantiate(ball, transform.position, transform.rotation).GetComponent<Ball>();
             Debug.Log("ball spawn");
             Audio.inst.SoundPlay(Audio.SoundName.Shoot);
-
-            //if (BScoreGame1.inst.ballscore == 0)
-            //{
-            //    UIManager.inst.ShowNextScreen(ScreenEnum.LevelComplete);
-            //    return;
-            //}
+            balls.Add(ballobj);
             //else if (BScoreGame2.inst.ballscore == 0)
             //{
             //    UIManager.inst.ShowNextScreen(ScreenEnum.LevelComplete);
@@ -46,7 +43,16 @@ public class Spawner : MonoBehaviour
             //    return;
             //}
 
+
         }
+        if (BScoreGame1.inst.ballscore == 0)
+        {
+            OnAction = null;
+            UIManager.inst.ShowNextScreen(ScreenEnum.LevelComplete);
+            return;
+        }
+
+
 
     }
 
@@ -59,6 +65,15 @@ public class Spawner : MonoBehaviour
     {
         OnAction -= BallSpawn;
 
+    }
+
+    public void Onreset()
+    {
+        for (int i = 0; i < balls.Count; i++)
+        {
+            Destroy(balls[i].gameObject);
+        }
+        balls.Clear();
     }
 
 }

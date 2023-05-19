@@ -9,15 +9,14 @@ public class MainMenu : screen
     public void Start()
     {
         SettingPanel.SetActive(false);
-        //Audio.inst.BackgroundMusic(Audio.SoundName.Mainmenu);
+
     }
     public void OnPlayButton()
     {
         UIManager.inst.ShowNextScreen(ScreenEnum.GamePlay);
-        Audio.inst.SoundPlay(Audio.SoundName.Buttons);
-        Spawner.inst.OnEnablePlay();
         Audio.inst.BackgroundMusic(Audio.SoundName.Background);
-
+        Audio.inst.SoundPlay(Audio.SoundName.Buttons);
+        //Spawner.inst.OnEnablePlay();
     }
 
     public void OnSettingButton()

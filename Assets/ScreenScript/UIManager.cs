@@ -21,6 +21,12 @@ public class UIManager : MonoBehaviour
 
         screenList[(int)ScreenType].ShowScreen();
         currentScreen = screenList[(int)ScreenType];
+
+        if (ScreenType == ScreenEnum.GamePlay)
+        {
+            Spawner.inst.OnAction += Spawner.inst.BallSpawn;
+        }
+
     }
 
 }
