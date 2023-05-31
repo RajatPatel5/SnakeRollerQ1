@@ -12,7 +12,6 @@ public class Splash : screen
 
     private void Start()
     {
-
         inst = this;
         image = GetComponent<Image>();
 
@@ -20,8 +19,6 @@ public class Splash : screen
         StartCoroutine(EnableMainMenu());
 
     }
-
-
     IEnumerator EnableMainMenu()
     {
         yield return new WaitForSeconds(2);

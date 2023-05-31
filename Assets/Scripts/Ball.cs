@@ -18,16 +18,10 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("obs"))
         {
-            Audio.inst.SoundPlay(Audio.SoundName.GameOver);
             UIManager.inst.ShowNextScreen(ScreenEnum.GameOver);
-            Spawner.inst.OnDisablePlay();
-
+            Audio.inst.SoundPlay(Audio.SoundName.GameOver);
 
         }
-
-
     }
-
-
 }
 

@@ -6,10 +6,6 @@ using UnityEngine.UI;
 
 public class Seting : MonoBehaviour
 {
-    //public GameObject gameplay;
-    //public Button ssbtn;
-    //public Image start;
-    //public Image stop;
     public Slider soundslider;
     public Slider bgsoundslider;
     public AudioSource audiosource;
@@ -32,12 +28,13 @@ public class Seting : MonoBehaviour
         soundslider.value = PlayerPrefs.GetFloat("save", soundslidervalue);
         bgsoundslider.value = PlayerPrefs.GetFloat("save", bgsoundslidervalue);
 
-
     }
     public void Update()
     {
         audiosource.volume = soundslider.value;
         bgaudiosource.volume = bgsoundslider.value;
+        PlayerPrefs.SetFloat("save", soundslidervalue);
+        PlayerPrefs.SetFloat("save", soundslidervalue);
     }
     public void Onpluse()
     {

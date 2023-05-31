@@ -7,66 +7,40 @@ using UnityEngine.UI;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] GameObject ball;
-    public Action OnAction;
     public static Spawner inst;
     public List<Ball> balls = new List<Ball>();
+    public static Action  edAction;
 
-    private void Awake()
+    public void Awake()
     {
         inst = this;
     }
-
+    private void OnEnable()
+    {
+        GameStateManager.OnGameStateChanged += OnStateChanged;
+    }
     private void Update()
     {
-        OnAction?.Invoke();
+        edAction?.Invoke();
     }
-
-
     public void BallSpawn()
     {
-        Debug.LogWarning("BALL SPAWBIBG");
-
+       
         if (Input.GetMouseButtonDown(0))
         {
             Ball ballobj = Instantiate(ball, transform.position, transform.rotation).GetComponent<Ball>();
             Debug.Log("ball spawn");
             Audio.inst.SoundPlay(Audio.SoundName.Shoot);
             balls.Add(ballobj);
-            //else if (BScoreGame2.inst.ballscore == 0)
-            //{
-            //    UIManager.inst.ShowNextScreen(ScreenEnum.LevelComplete);
-            //    return;
-            //}
-            //else if (BScoreGame3.inst.ballscore == 0)
-            //{
-            //    UIManager.inst.ShowNextScreen(ScreenEnum.LevelComplete);
-            //    return;
-            //}
-
-
         }
-        if (BScoreGame1.inst.ballscore == 0)
+    }
+    public void Ondisplayall()
+    {
+        for (int i = 0; i < balls.Count; i++)
         {
-            OnAction = null;
-            UIManager.inst.ShowNextScreen(ScreenEnum.LevelComplete);
-            return;
+       
         }
-
-
-
     }
-
-    public void OnEnablePlay()
-    {
-        OnAction += BallSpawn;
-
-    }
-    public void OnDisablePlay()
-    {
-        OnAction -= BallSpawn;
-
-    }
-
     public void Onreset()
     {
         for (int i = 0; i < balls.Count; i++)
@@ -75,7 +49,29 @@ public class Spawner : MonoBehaviour
         }
         balls.Clear();
     }
-
+    public void OnStateChanged(GameState gs)
+    {
+        switch (gs)
+        {
+            case GameState.Splash:
+                edAction -= BallSpawn;
+                break;
+            case GameState.MainMenu:
+                edAction -= BallSpawn;
+                break;
+            case GameState.Gameplay:
+                edAction += BallSpawn;
+                break;
+            case GameState.GameOver:
+                edAction -= BallSpawn;
+                break;
+            case GameState.LevelComplete:
+                edAction -= BallSpawn;
+                break;
+          
+              
+        }
+    }
 }
 
 

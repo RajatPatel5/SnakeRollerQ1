@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
@@ -11,7 +12,12 @@ public class LevelManager : MonoBehaviour
     public GameObject parent;
     private int lvlCount = 0;
     private GameObject store;
+    public int levelno =1;
 
+    private void Update()
+    {
+        display();
+    }
     private void Awake()
     {
         inst = this;
@@ -26,15 +32,21 @@ public class LevelManager : MonoBehaviour
             Destroy(store);
         }
         store = Instantiate(lvlprefebs[lvlCount], parent.transform);
-
-
-
     }
     public void NextButton()
     {
         lvlCount += 1;
+       
         OnLoadLvel();
+
+        levelno+=1;
+        ScoreManage.inst.level.text = levelno.ToString();
+
+    }
+    void display()
+    {
+        ScoreManage.inst.level.text = levelno.ToString();
     }
 
-}
 
+}
